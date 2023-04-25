@@ -6,7 +6,7 @@ const gapRange = [50000, 200000];
 function hiChatgpt() {
   setTimeout(() => {
     fetch(heartbeatUrl).then((res) => {
-      if (!res.ok) iframe.src = heartbeatUrl;
+      if (!res.ok) iframe.src = '/404';
       hiChatgpt();
     });
   }, Math.random() * (gapRange[1] - gapRange[0]) + gapRange[0]);
