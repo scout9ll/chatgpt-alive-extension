@@ -5,10 +5,13 @@ const heartbeatUrl = "/api/auth/session";
 const gapRange = [50000, 200000];
 function hiChatgpt() {
   setTimeout(() => {
-    fetch(heartbeatUrl).then((res) => {
-      if (!res.ok) iframe.src = '/404';
-      hiChatgpt();
-    });
+    fetch(heartbeatUrl)
+      .then((res) => {
+        if (!res.ok) iframe.src = "/404";
+      })
+      .finally(() => {
+        hiChatgpt();
+      });
   }, Math.random() * (gapRange[1] - gapRange[0]) + gapRange[0]);
 }
 hiChatgpt();
